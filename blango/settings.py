@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -138,4 +139,14 @@ REST_FRAMEWORK = [
             "user_sustained": "5000/day",
             "user_burst": "100/minute",
         },
+        #PageNumberPagination class implemented
+        "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+        "PAGE_SIZE": 100,
+
+        #django-filter backend implemented
+        "DEFAULT_FILTER_BACKENDS": [
+            "django_filters.rest_framework.DjangoFilterBackend",
+            #ordering implemented
+            "rest_framework.filters.OrderingFilter",
+        ],
 ]
